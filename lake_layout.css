@@ -1,0 +1,131 @@
+﻿@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 7th Edition
+   Tutorial 2
+   Case Problem 4
+   
+   The Great Lakescape Lodge Layout Styles
+   Filename: lake_layout.css
+*/
+
+/* ===== Page Body: Grid Layout ===== */
+/* Centre the page, set width limits, add green side borders,
+   and define a 2-column, 3-row grid for the whole page */
+body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1300px;
+    min-width: 640px;
+    border-left: 30px solid rgb(179, 196, 120);
+    border-right: 30px solid rgb(179, 196, 120);
+
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-areas:
+        "header header"
+        "left   right"
+        "footer footer";
+}
+
+/* ===== Header Banner Image: full width ===== */
+/* Make the lodge banner image stretch across the header
+   and remove any default spacing below it */
+body > header > img {
+    width: 100%;
+    display: block;
+    margin: 0;
+}
+
+/* ===== Grid Area Assignment ===== */
+/* Place each major section into its named grid area */
+header {
+    grid-area: header;
+}
+
+#leftcol {
+    grid-area: left;
+}
+
+#rightcol {
+    grid-area: right;
+}
+
+footer {
+    grid-area: footer;
+}
+
+/* ===== Global Box Model ===== */
+/* Apply border-box sizing to all common elements so that
+   padding and borders are included in the width/height */
+address, article, aside, blockquote, body, cite,
+div, dl, dt, dd, em, figcaption, figure, footer,
+h1, h2, h3, h4, h5, h6, header, html, img,
+li, main, nav, ol, p, section, span, ul {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* ===== Header Navigation: table layout ===== */
+/* Use a table layout to spread the nav links evenly
+   across the full width of the header */
+header > nav {
+    display: table;
+    width: 100%;
+}
+
+header > nav > ul {
+    display: table-row;
+    list-style-type: none;
+}
+
+header > nav > ul > li {
+    display: table-cell;
+    text-align: center;
+    padding: 5px 0;
+}
+
+header > nav a {
+    display: block;
+    width: 100%;
+}
+
+/* ===== Left Column Asides: two floating columns ===== */
+/* Float the two aside boxes side by side inside the left column,
+   with a small gap between them and space below */
+section#leftcol aside {
+    width: 46%;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 20px;
+}
+
+/* ===== Left Column Image: full width ===== */
+/* Make the lodge photo fill the left column and remove
+   the inline image gap */
+section#leftcol img {
+    width: 100%;
+    display: block;
+}
+
+/* ===== Right Column Navigation: Flexbox column ===== */
+/* Stack the right column navigation items vertically
+   with even spacing between them */
+#rightcol nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Remove the default bottom margin on the nav headings */
+#rightcol nav h2 {
+    margin-bottom: 0;
+}
+
+/* Remove the default top and bottom margins on the nav lists */
+#rightcol nav ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
